@@ -1,11 +1,18 @@
-import { Button } from "./components/ui/button";
+import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react';
+
+import { Button } from './components/ui/button';
 
 function App() {
   return (
-    <>
-      <h1 className="text-red-500 text-5xl">hehe</h1>
-      <Button variant={"outline"}>button test</Button>
-    </>
+    <header>
+        <Show when="signed-out">
+          <Button><SignInButton /></Button>
+          <Button><SignUpButton /></Button>
+        </Show>
+        <Show when="signed-in">
+          <UserButton />
+        </Show>
+      </header>
   );
 }
 
