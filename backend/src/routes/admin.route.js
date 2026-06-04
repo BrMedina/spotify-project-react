@@ -3,7 +3,7 @@ import { getAdmin } from "../controller/admin.controller.js";
 
 const router = Router();
 
-router.get("/", );
+router.get("/", getAdmin);
 
 
 export default router;
