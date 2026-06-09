@@ -1,7 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
 import AuthCallbackPage from "./pages/auth-callback/AuthCallbackPage";
+import { axiosInstance } from "./lib/axios";
 function App() {
+  axiosInstance
+  
   return (
     <>
       <Routes>
