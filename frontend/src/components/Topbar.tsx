@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut } from '@clerk/clerk-react';
+import { SignedIn, SignedOut, SignOutButton } from '@clerk/clerk-react';
 import { LayoutDashboardIcon } from 'lucide-react';
 import React from 'react'
 import { Link } from 'react-router-dom';
