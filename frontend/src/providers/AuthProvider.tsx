@@ -1,5 +1,5 @@
 import { axiosInstance } from "@/lib/axios";
-import { useAuth } from "@clerk/react";
+import { useAuth } from "@clerk/clerk-react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Loader } from "lucide-react";
