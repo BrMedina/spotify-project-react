@@ -2,19 +2,19 @@ import { User } from "../models/user.model.js";
 
 export const authCallback = async(req, res, next) => {
     try {
-        const { id, firstName, lastName, imageUrl}= req.body;
+        const { id, firstName, lastName, imageUrl } = req.body;
 
-        //checking if user already exist
-        const user = await User.findOne({clerkID: id});;
+        const fullname = [firstName, lastName].filter(Boolean).join(" ").trim() || "Unknown User";
 
-        //signup logic
-        if(!user) {
-            await User.create({
+        await User.findOneAndUpdate(
+            { clerkId: id },
+            {
                 clerkId: id,
-                fullname: `${firstName} ${lastName}`,
-                imageUrl
-            })
-        }
+                fullname,
+                imageUrl,
+            },
+            { upsert: true, returnDocument: "after", runValidators: true }
+        );
 
         res.status(200).json({success:true})
     } catch (error) {

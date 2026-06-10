@@ -1,5 +1,4 @@
 import { useSignIn } from '@clerk/clerk-react';
-import React from 'react'
 import { Button } from './ui/button';
 
 const SignInOAuthButtons = () => {
@@ -7,15 +6,15 @@ const SignInOAuthButtons = () => {
 
     if(!isLoaded) return null;
 
-    const signWithGoogle = async () => {
+    const signInWithGoogle = async () => {
     signIn.authenticateWithRedirect({
-      strategy: "oauth_google",
-      redirectUrl: "/sso-callback",
-      redirectUrlComplete: "/auth-callback"
+    strategy: "oauth_google",
+    redirectUrl: "/sso-callback",
+    redirectUrlComplete: "/auth-callback",
     });
   };
     return  <Button 
-            onClick={signWithGoogle} 
+            onClick={signInWithGoogle} 
             variant={'secondary'} 
             className='w-full text-white border-zinc-200 h-11'>
 

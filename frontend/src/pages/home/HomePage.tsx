@@ -1,4 +1,3 @@
-import React from 'react'
 import Topbar from '@/components/topBar'
 
 const HomePage = () => {

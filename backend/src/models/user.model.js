@@ -6,10 +6,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    imageURL: {
+    imageUrl: {
         type: String,
         required: true,
-        unique: true
     },
     clerkId: {
         type: String,
