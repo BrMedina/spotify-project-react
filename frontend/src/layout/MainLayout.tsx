@@ -1,6 +1,5 @@
-import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { ResizablePanelGroup, ResizablePanel } from '@/components/ui/resizable'
+import { ResizableHandle, ResizablePanelGroup, ResizablePanel } from '@/components/ui/resizable'
 
 const MainLayout = () => {
     const isMobile = false;
@@ -8,17 +7,24 @@ const MainLayout = () => {
   return (
     <div className='h-screen bg-black text-white flex flex-col'>
         
-        <ResizablePanelGroup className='flex-1 flex h-full overflow-hidden p-2'>
+        <ResizablePanelGroup className='flex-1 flex h-full overflow-hidden'>
 
-            <ResizablePanel defaultSize={20} minSize={isMobile ? 0:10} maxSize={30}>
+            {/*left panel */}
+            <ResizablePanel defaultSize={24} minSize={isMobile ? 0:12} maxSize={140}>
                 left sidebar
             </ResizablePanel>
 
+            <ResizableHandle className='w-2 bg-black rouned-lg transition-colors'/>
+            
+            {/* main content */}
             <ResizablePanel defaultSize={isMobile ? 80:60}>
                 <Outlet/>
             </ResizablePanel>
 
-            <ResizablePanel defaultSize={20} minSize={0} maxSize={25} collapsedSize={0}>
+            <ResizableHandle className='w-2 bg-black rouned-lg transition-colors'/>
+
+            {/*right panel */}
+            <ResizablePanel defaultSize={24} minSize={0} maxSize={140} collapsedSize={0}>
                 friends activity component
             </ResizablePanel>
         </ResizablePanelGroup>
