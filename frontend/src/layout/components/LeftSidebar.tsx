@@ -9,7 +9,7 @@ import PlaylistSkeleton from '@/components/skeletons/PlaylistSkeleton'
 
 
 export const LeftSidebar = () => {
-    const isLoading = true;
+    const isLoading = false;
   return (
     <div className='h-full flex flex-col gap-2'>
         {/* navigation menu*/}
