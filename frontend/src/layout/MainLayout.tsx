@@ -11,7 +11,7 @@ const MainLayout = () => {
         <ResizablePanelGroup className='flex-1 flex h-full overflow-hidden'>
 
             {/*left panel */}
-            <ResizablePanel defaultSize={24} minSize={isMobile ? 0:12} maxSize={240}>
+            <ResizablePanel defaultSize={24} minSize={isMobile ? 0:12} maxSize={270}>
                 <LeftSidebar/>
             </ResizablePanel>
 

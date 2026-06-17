@@ -74,10 +74,10 @@ export const LeftSidebar = () => {
 
                                 <div className='flex-1 min-w-0 hidden md:block'>
                                     <p className='font-medium truncate'>
-                                        {album.title};
+                                        {album.title}
                                     </p>
                                     <p className='text-sm text-zinc-400 truncate'>
-                                        Album • {album.artist};
+                                        Album • {album.artist}
                                     </p>
                                 </div>
                             </Link>
