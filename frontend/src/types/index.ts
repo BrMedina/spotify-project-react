@@ -6,7 +6,7 @@ export interface Song {
     imageURL: string;
     audioUrl: string;
     duration: number;
-    createdAt: Date;
+    createdAt: string;
     updatedAt: Date;
 }
 
