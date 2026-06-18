@@ -12,7 +12,7 @@ import { useMusicStore } from '@/stores/useMusicStore'
 export const LeftSidebar = () => {
 
     //data fetching
-    const { albums, fetchAlbums, isLoading}= useMusicStore();
+    const { albums, fetchAlbums, isLoading, songs}= useMusicStore();
 
     useEffect(() => {
         fetchAlbums()
@@ -69,7 +69,7 @@ export const LeftSidebar = () => {
                             className='p-2 hover:bg-zinc-800 rounded-md flex items=center gap-3 group cursor-pointer'
                             >
                                 <img src={album.imageURL} alt="Playlist image"
-                                className='size-12 rounded-md flex-shrink-0 object-cover'
+                                className='size-12 rounded-md shrink-0 object-cover'
                                 />
 
                                 <div className='flex-1 min-w-0 hidden md:block'>

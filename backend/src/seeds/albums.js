@@ -159,6 +159,13 @@ const seedDatabase = async () => {
 				releaseYear: 2024,
 				songs: createdSongs.slice(11, 14).map((song) => song._id),
 			},
+			{
+				title: "leaf songs",
+				artist: "leaf",
+				imageURL: "/cover-images/leaf-logo.jpg",
+				releaseYear: 2025,
+				songs: createdSongs.slice(19, 20).map((song) => song._id),
+			},
 		];
 
 		// Insert all albums

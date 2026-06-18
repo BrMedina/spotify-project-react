@@ -131,6 +131,22 @@ const songs = [
 		audioUrl: "/songs/18.mp3",
 		duration: 29, // 0:29
 	},
+	{
+		//19
+		title: "Tahimik",
+		artist: "leaf",
+		imageURL: "/cover-images/leaf-tahimik.jpg",
+		audioUrl: "/songs/leafTahimik.mp3",
+		duration: 29, // 0:29
+	},
+	{
+		//20
+		title: "Maymagagawapaba",
+		artist: "leaf",
+		imageURL: "/cover-images/leaf-maymagagawapaba.jpg",
+		audioUrl: "/songs/leafMaymagagawapaba.mp3",
+		duration: 29, // 0:29
+	},
 ];
 
 const seedSongs = async () => {
