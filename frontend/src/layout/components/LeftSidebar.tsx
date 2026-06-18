@@ -60,7 +60,7 @@ export const LeftSidebar = () => {
                 </div>
             </div>
 
-            <ScrollArea className='h-[calc(100vh-300px)]'>
+            <ScrollArea className='h-[calc(100vh-200px)]'>
                 <div className='space-y-2'>
                     {isLoading ? <PlaylistSkeleton /> : (
                         albums.map((album) => (
@@ -77,7 +77,7 @@ export const LeftSidebar = () => {
                                         {album.title}
                                     </p>
                                     <p className='text-sm text-zinc-400 truncate'>
-                                        Album • {album.artist}
+                                        Playlist • {album.artist}
                                     </p>
                                 </div>
                             </Link>

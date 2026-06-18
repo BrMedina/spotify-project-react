@@ -127,8 +127,26 @@ const seedDatabase = async () => {
 				plays: Math.floor(Math.random() * 5000),
 				duration: 17, // 0:17
 			},
+			{
+				title: "Tahimik",
+				artist: "leaf",
+				imageURL: "/cover-images/leaf-tahimik.jpg",
+				audioUrl: "/songs/leafTahimik.mp3",
+				plays: Math.floor(Math.random() * 5000),
+				duration: 199, // 0:29
+			},
+			{
+				title: "Maymagagawapaba",
+				artist: "leaf",
+				imageURL: "/cover-images/leaf-maymagagawapaba.jpg",
+				audioUrl: "/songs/leafMaymagagawapaba.mp3",
+				plays: Math.floor(Math.random() * 5000),
+				duration: 216, // 0:29
+			},
 		]);
 
+		const leafSongs = createdSongs.filter((song) => song.artist === "leaf");
+		
 		// Create albums with references to song IDs
 		const albums = [
 			{
@@ -164,7 +182,7 @@ const seedDatabase = async () => {
 				artist: "leaf",
 				imageURL: "/cover-images/leaf-logo.jpg",
 				releaseYear: 2025,
-				songs: createdSongs.slice(19, 20).map((song) => song._id),
+				songs: leafSongs.map((song) => song._id),
 			},
 		];
 

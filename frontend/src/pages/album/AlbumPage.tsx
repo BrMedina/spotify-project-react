@@ -10,7 +10,7 @@ import { Clock } from "lucide-react";
 const formatDuration = (seconds:number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    
+
     return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
 }
 
@@ -44,7 +44,7 @@ const AlbumPage = () => {
                         />
                         <div className="flex flex-col justify-end">
                             <p className="text-sm font-medium">
-                                Album
+                                Playlist
                             </p>
                             <h1 className="text-7xl font-bold my-4">{currentAlbum?.title}</h1>
                             <div className="flex items-center gap-2 text-sm text-zinc-100">
@@ -68,10 +68,11 @@ const AlbumPage = () => {
                 {/* table section */}
                 <div className="bg-black/20 backdrop-blur-sm">
                     {/* table header */}
-                    <div className="grid grid-cols-[16px_4fr_2fr_1fr] gap-4 px-10 py-2 text-sm text-zinc-400 border-b border-white/5">
+                    <div className="grid grid-cols-[16px_4fr_2fr_1fr] gap-4 px-10 py-2 text-sm 
+                    text-zinc-400 border-b border-white/5">
                         <div>#</div>
                         <div>Title</div>
-                        <div>Released date</div>
+                        <div>Release date</div>
                         <div>
                             <Clock className="h-4 w-4"/>
                         </div>
@@ -86,8 +87,8 @@ const AlbumPage = () => {
                                 group cursor-pointer`}>
 
                                     <div className="flex items-center justify-center">
-                                        <span className="group hover:hidden">{index + 1}</span>
-                                        <Play className="h-4 w-4 hidden group-hover:block"/>
+                                        <span className="group-hover:hidden">{index + 1}</span>
+                                        <Play className="h-4 w-4 hidden group-hover:block" />
                                     </div>
 
                                     <div className="flex items-center gap-3">
@@ -99,9 +100,11 @@ const AlbumPage = () => {
                                             <div>{song.artist}</div>
                                         </div>
 
-                                        <div className="flex items-center">{song.createdAt.split("T")[0]}</div>
-                                        <div className="flex items-center">{formatDuration(song.duration)}</div>
+                                        
                                     </div>
+                                    
+                                    <div className="flex items-center">{song.createdAt.split("T")[0]}</div>
+                                    <div className="flex items-center">{formatDuration(song.duration)}</div>
 
                                 </div>
                             ) ) }
