@@ -18,15 +18,15 @@ const FriendsActivity = () => {
 const isPlaying = true;
     
   return (
-    <div className="h-full bg-zinc-900 rounded-lg flex- flex-col">
-        <div className="p-4 flex justify-between items-center border-b border-zinc-800">
-            <div className="flex items-center gap-2">
+    <div className="h-full bg-zinc-900 rounded-lg flex flex-col">
+        <div className="p-6 flex justify-between items-center border-b border-zinc-800">
+            <div className="flex items-center gap-5">
                 <Users className="size-5 shrink-0" />
-                <h2 className="font-semibold">What they're listening to</h2>
+                <h2 className="font-semibold text-m">What they're listening to</h2>
             </div>
         </div>
         {!user && <LoginPrompt/>}
-        <ScrollArea className="flex-1">
+        <ScrollArea className="flex-1 overflow-visible">
             <div className="p-4 space-y-4">
                 {users.map((user) => (
                     <div key={user._id} className="cursor-pointer hover:bg-zinc-800/50 p-3 rounded-md transition-colors group"

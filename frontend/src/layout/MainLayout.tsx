@@ -2,17 +2,19 @@ import { Outlet } from 'react-router-dom'
 import { ResizableHandle, ResizablePanelGroup, ResizablePanel } from '@/components/ui/resizable'
 import { LeftSidebar } from './components/LeftSidebar';
 import FriendsActivity from './components/FriendsActivity';
+import TopBar from '@/components/Topbar';
 
 const MainLayout = () => {
     const isMobile = false;
 
   return (
     <div className='h-screen bg-black text-white flex flex-col'>
-        
+        <TopBar/>
         <ResizablePanelGroup className='flex-1 flex h-full overflow-hidden'>
+            
 
             {/*left panel */}
-            <ResizablePanel defaultSize={24} minSize={isMobile ? 0:12} maxSize={280}>
+            <ResizablePanel defaultSize={30} minSize={isMobile ? 0:12} maxSize={280}>
                 <LeftSidebar/>
             </ResizablePanel>
 

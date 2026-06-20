@@ -52,7 +52,7 @@ export const LeftSidebar = () => {
             </div>
         </div>
 
-        <div className="flex-1 rounded-lg bg-zinc-900 p-4">
+        <div className="flex-1 rounded-lg bg-zinc-900 p-4 flex flex-col">
             <div className='flex items-center justify-between mb-4'>
                 <div className="flex items-center text-white px-2">
                     <Library className='size-5 mr-2'/>
@@ -60,7 +60,7 @@ export const LeftSidebar = () => {
                 </div>
             </div>
 
-            <ScrollArea className='h-[calc(100vh-200px)]'>
+            <ScrollArea className='flex-1'>
                 <div className='space-y-2'>
                     {isLoading ? <PlaylistSkeleton /> : (
                         albums.map((album) => (
