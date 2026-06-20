@@ -3,6 +3,7 @@ import { useAuth } from "@clerk/clerk-react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Loader } from "lucide-react";
+import { useAuthStore } from "@/stores/useAuthStore";
 
 const updateApiToken = (token:String | null) => {
     if (token) {
@@ -15,6 +16,7 @@ const updateApiToken = (token:String | null) => {
 const AuthProvider = ({children}:{children:React.ReactNode}) => {
     const {getToken} = useAuth();
     const [loading, setLoading] = useState(true);
+    const {checkAdminStatus} = useAuthStore();
 
     useEffect(() => {
         const initAuth = async() => {
@@ -22,6 +24,9 @@ const AuthProvider = ({children}:{children:React.ReactNode}) => {
                 const token = await getToken()
                 updateApiToken(token);
 
+                if (token) {
+                    await checkAdminStatus();
+                }
             } catch (error) {
                 updateApiToken(null);
                 console.log("Error in auth provider",error);

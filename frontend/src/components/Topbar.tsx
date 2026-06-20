@@ -1,11 +1,13 @@
-import { SignedIn, SignedOut, SignOutButton } from '@clerk/clerk-react';
+import { SignedIn, SignedOut, SignOutButton, UserButton } from '@clerk/clerk-react';
 import { LayoutDashboardIcon } from 'lucide-react';
 import React from 'react'
 import { Link } from 'react-router-dom';
 import SignInOAuthButtons from './SignInOAuthButtons';
+import { useAuthStore } from '@/stores/useAuthStore';
 
 const topBar = () => {
-    const isAdmin = false;
+    const isAdmin = useAuthStore;
+    console.log(isAdmin);
 
   return (
     <div className='flex items-center justify-between p-4 sticky top-0 bg-zinc-900/75
@@ -28,6 +30,8 @@ const topBar = () => {
             <SignedOut>
                 <SignInOAuthButtons />
             </SignedOut>
+
+            <UserButton />
         </div>
     </div>
   )
