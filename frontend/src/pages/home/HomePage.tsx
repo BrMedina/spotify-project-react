@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useMusicStore } from "../../stores/useMusicStore"
+import FeaturedSection from "./components/FeaturedSection";
 
 
 const HomePage = () => {
@@ -21,6 +22,7 @@ const HomePage = () => {
 
   return (
     <div className='rounded-md overflow-hidden'>
+      <FeaturedSection/>
     </div>
   )
 }
