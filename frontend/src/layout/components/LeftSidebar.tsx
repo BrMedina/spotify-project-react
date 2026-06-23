@@ -70,6 +70,7 @@ export const LeftSidebar = () => {
                             >
                                 <img src={album.imageURL} alt="Playlist image"
                                 className='size-12 rounded-md shrink-0 object-cover'
+                                draggable='false'
                                 />
 
                                 <div className='flex-1 min-w-0 hidden md:block'>

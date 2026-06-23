@@ -41,6 +41,7 @@ const AlbumPage = () => {
                         <img src={currentAlbum?.imageURL}
                         alt={currentAlbum?.title}
                         className="w-60 h-60 shadow-xl rounded"
+                        draggable='false'
                         />
                         <div className="flex flex-col justify-end">
                             <p className="text-sm font-medium">
@@ -93,7 +94,7 @@ const AlbumPage = () => {
 
                                     <div className="flex items-center gap-3">
                                         <img src={song.imageURL} alt={song.title}
-                                        className="size-10 " />
+                                        className="size-10 " draggable='false' />
 
                                         <div>
                                             <div className={`font-medium text-white`}> {song.title} </div>
