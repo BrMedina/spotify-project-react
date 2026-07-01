@@ -29,8 +29,14 @@ const SectionGrid = ({ title, songs, isLoading}:SectionGridProps) => {
                 <img src={song.imageURL} alt={song.title}
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
               </div>
-
             </div>
+
+            <h3 className="font-medium mt-2 mb-2 truncate">
+              {song.title}
+            </h3>
+            <p className="text-sm text-zinc-400 truncate">
+              {song.artist}
+            </p>
 
           </div>
         ))}

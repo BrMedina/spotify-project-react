@@ -23,18 +23,19 @@ const HomePage = () => {
   
 
   return (
-    <main className='rounded-md overflow-hidden h-full bg-linear-to-b from-zinc-800 to-zinc-900'>
-      <ScrollArea className="h-[calc(100vh - 180px)]">
+    <main className='flex h-full min-h-0 flex-col overflow-hidden rounded-md bg-linear-to-b from-zinc-800 to-zinc-900'>
+      <ScrollArea className="flex-1 min-h-0">
         <div className="p-4 sm:p-6">
           <h1 className="text-2xl sm:text-3xl font-bold mb-6">
             Good Afternoon
           </h1>
           <FeaturedSection/>
-        </div>
+        
 
-        <div className="space-y-8">
-          <SectionGrid title="Made For You" songs={madeForYouSongs} isLoading={isLoading}/>
-          <SectionGrid title="Trending" songs={trendingSongs} isLoading={isLoading}/>
+          <div className="space-y-8">
+            <SectionGrid title="Made For You" songs={madeForYouSongs} isLoading={isLoading}/>
+            <SectionGrid title="Trending" songs={trendingSongs} isLoading={isLoading}/>
+          </div>
         </div>
       </ScrollArea>
     </main>
