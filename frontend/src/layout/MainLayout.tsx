@@ -3,6 +3,7 @@ import { ResizableHandle, ResizablePanelGroup, ResizablePanel } from '@/componen
 import { LeftSidebar } from './components/LeftSidebar';
 import FriendsActivity from './components/FriendsActivity';
 import TopBar from '@/components/Topbar';
+import AudioPlayer from './components/AudioPlayer';
 
 const MainLayout = () => {
     const isMobile = false;
@@ -12,6 +13,7 @@ const MainLayout = () => {
         <TopBar/>
         <ResizablePanelGroup className='flex-1 flex h-full min-h-0 overflow-hidden'>
             
+            <AudioPlayer />
 
             {/*left panel */}
             <ResizablePanel className='min-h-0' defaultSize={30} minSize={isMobile ? 0:12} maxSize={280}>
