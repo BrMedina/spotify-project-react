@@ -8,7 +8,7 @@ import { Clock } from "lucide-react";
 import { usePlayerStore } from "@/stores/usePlayerStore";
 
 
-const formatDuration = (seconds:number) => {
+export const formatDuration = (seconds:number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
 
@@ -119,20 +119,20 @@ const AlbumPage = () => {
         playAlbum(currentAlbum?.songs, index);
     }
 
-    return <div className="h-full">
-        <ScrollArea className="h-full rounded-md">
+    return <div className="h-full w-full">
+        <ScrollArea className="h-full w-full rounded-md">
             {/* main content */}
-            <div className="relative min-h-full">
+            <div className="relative w-full min-h-full flex flex-col">
                 {/* bg gradient */}
                 <div
-                    className="absolute inset-0 pointer-events-none"
+                    className="absolute inset-0 pointer-events-none z-0"
                     style={{ backgroundImage }}
                     aria-hidden='true'
                 />
 
                 {/* content */}
-                <div className="relative z-10">
-                    <div className="flex p-6 gap-6 pb-8">
+                <div className="relative z-10 flex flex-col flex-1">
+                    <div className="flex p-6 gap-6 pb-8 shrink-0">
                         <img src={currentAlbum?.imageURL}
                         alt={currentAlbum?.title}
                         className="w-60 h-60 shadow-xl rounded"
@@ -158,7 +158,7 @@ const AlbumPage = () => {
                     </div>
 
                 {/* play button */}
-                <div className="px-6 pb-4 flex items-center gap-6">
+                <div className="px-6 pb-4 flex items-center gap-6 shrink-0">
                     <Button 
                     onClick={handlePlayAlbum}
                     size='icon'
@@ -172,7 +172,7 @@ const AlbumPage = () => {
                 </div>
 
                 {/* table section */}
-                <div className="bg-black/20 backdrop-blur-sm">
+                <div className="flex-1 bg-black/20 backdrop-blur-sm">
                     {/* table header */}
                     <div className="grid grid-cols-[16px_4fr_2fr_1fr] gap-4 px-10 py-2 text-sm 
                     text-zinc-400 border-b border-white/5">
