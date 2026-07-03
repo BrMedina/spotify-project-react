@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import { ResizableHandle, ResizablePanelGroup, ResizablePanel } from '@/components/ui/resizable'
 import { LeftSidebar } from './components/LeftSidebar';
+import PlaybackControls from './components/PlaybackControls.tsx'
 import FriendsActivity from './components/FriendsActivity';
 import TopBar from '@/components/Topbar';
 import AudioPlayer from './components/AudioPlayer';
@@ -34,6 +35,8 @@ const MainLayout = () => {
                 <FriendsActivity />
             </ResizablePanel>
         </ResizablePanelGroup>
+
+        <PlaybackControls />
     </div>
   )
 }
