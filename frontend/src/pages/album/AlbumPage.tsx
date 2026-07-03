@@ -1,6 +1,6 @@
 import { useMusicStore } from "@/stores/useMusicStore";
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Pause, Play } from "lucide-react";
@@ -15,16 +15,91 @@ const formatDuration = (seconds:number) => {
     return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
 }
 
+const getAlbumGradientFromImage = (imageUrl: string): Promise<string> => {
+    return new Promise((resolve) => {
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.src = imageUrl;
+
+        img.onload = () => {
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+
+            if (!ctx) {
+                resolve("linear-gradient(to bottom, rgba(80,56,160,0.8) 0%, rgba(24,24,27,0.9) 100%)");
+                return;
+            }
+
+            const size = 64;
+            canvas.width = size;
+            canvas.height = size;
+            ctx.drawImage(img, 0, 0, size, size);
+
+            const imageData = ctx.getImageData(0, 0, size, size).data;
+            const colorMap = new Map<string, number>();
+
+            for (let i = 0; i < imageData.length; i += 16) {
+                const r = imageData[i];
+                const g = imageData[i + 1];
+                const b = imageData[i + 2];
+                const a = imageData[i + 3];
+
+                if (a < 120) continue;
+
+                const quantized = `${Math.round(r / 32) * 32},${Math.round(g / 32) * 32},${Math.round(b / 32) * 32}`;
+                colorMap.set(quantized, (colorMap.get(quantized) ?? 0) + 1);
+            }
+
+            const dominantColors = Array.from(colorMap.entries())
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 2)
+                .map(([color]) => color);
+
+            if (dominantColors.length === 0) {
+                resolve("linear-gradient(to bottom, rgba(80,56,160,0.8) 0%, rgba(24,24,27,0.9) 100%)");
+                return;
+            }
+
+            const [topColor] = dominantColors;
+            const [topR, topG, topB] = topColor.split(",").map(Number);
+
+            resolve(`linear-gradient(to bottom, rgba(${topR}, ${topG}, ${topB}, 0.9) 0%, rgba(24, 24, 27, 0.95) 100%)`);
+        };
+
+        img.onerror = () => {
+            resolve("linear-gradient(to bottom, rgba(80,56,160,0.8) 0%, rgba(24,24,27,0.9) 100%)");
+        };
+    });
+};
+
 const AlbumPage = () => {
     const {albumId} = useParams();
     const { fetchAlbumById, currentAlbum, isLoading} = useMusicStore( )
     const {currentSong, isPlaying, playAlbum, togglePlay} = usePlayerStore()
+    const [backgroundImage, setBackgroundImage] = useState("linear-gradient(to bottom, rgba(80,56,160,0.8) 0%, rgba(24,24,27,0.9) 100%)");
 
     useEffect(() => {
         if (albumId) fetchAlbumById(albumId)
     },[fetchAlbumById,albumId])
 
+    useEffect(() => {
+        let isCancelled = false;
 
+        if (!currentAlbum?.imageURL) {
+            setBackgroundImage("linear-gradient(to bottom, rgba(80,56,160,0.8) 0%, rgba(24,24,27,0.9) 100%)");
+            return;
+        }
+
+        getAlbumGradientFromImage(currentAlbum.imageURL).then((gradient) => {
+            if (!isCancelled) {
+                setBackgroundImage(gradient);
+            }
+        });
+
+        return () => {
+            isCancelled = true;
+        };
+    }, [currentAlbum?.imageURL]);
 
     if(isLoading) return null 
 
@@ -49,8 +124,10 @@ const AlbumPage = () => {
             {/* main content */}
             <div className="relative min-h-full">
                 {/* bg gradient */}
-                <div className="absolute inset-0 bg-linear-to-b from-[#5038a0]/80 via-zinc-900/80 to-zinc-900 pointer-events-none"
-                aria-hidden='true' 
+                <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ backgroundImage }}
+                    aria-hidden='true'
                 />
 
                 {/* content */}
@@ -65,7 +142,12 @@ const AlbumPage = () => {
                             <p className="text-sm font-medium">
                                 Playlist
                             </p>
-                            <h1 className="text-7xl font-bold my-4">{currentAlbum?.title}</h1>
+                            <h1
+                                className={currentAlbum?.title === "Cyberpunk" ? "album-title-glitch text-7xl font-bold my-4" : "text-7xl font-bold my-4"}
+                                data-text={currentAlbum?.title ?? ""}
+                            >
+                                {currentAlbum?.title}
+                            </h1>
                             <div className="flex items-center gap-2 text-sm text-zinc-100">
                                 <span className="font-medium text-white">{currentAlbum?.artist}</span>
                                 <span>• {currentAlbum?.songs.length} songs</span>

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -127,5 +128,59 @@
     }
   html {
     @apply font-sans;
+    }
+}
+
+.album-title-glitch {
+    position: relative;
+    display: inline-block;
+    font-family: 'Orbitron', 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #f8f3ff;
+}
+
+.album-title-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: transparent;
+    background: linear-gradient(90deg, rgba(29, 242, 240, 0.95), rgba(253, 198, 1, 0.95));
+    -webkit-background-clip: text;
+    background-clip: text;
+    clip-path: inset(50% 50% 50% 50%);
+    text-shadow: -1px -1px 0px #1df2f0, 1px 1px 0px #fdc601;
+    animation: glitchCycle 1.6s steps(2, end) infinite;
+    pointer-events: none;
+}
+
+@keyframes glitchCycle {
+    0% {
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0, -8px);
+    }
+    6% {
+        clip-path: inset(31% 0 40% 0);
+        transform: translate(-10px, 10px);
+    }
+    12% {
+        clip-path: inset(39% 0 15% 0);
+        transform: translate(10px, 0);
+    }
+    18% {
+        clip-path: inset(45% 0 40% 0);
+        transform: translate(-10px, 10px);
+    }
+    24% {
+        clip-path: inset(45% 0 6% 0);
+        transform: translate(10px, -10px);
+    }
+    30% {
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
+    }
+    100% {
+        clip-path: inset(50% 50% 50% 50%);
+        transform: translate(0);
     }
 }
