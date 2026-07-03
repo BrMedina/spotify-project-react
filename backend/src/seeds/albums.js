@@ -143,18 +143,27 @@ const seedDatabase = async () => {
 				plays: Math.floor(Math.random() * 5000),
 				duration: 216, // 0:29
 			},
+			{
+				title: "I Really Want to Stay at Your House",
+				artist: "Rosa Walton",
+				imageURL: "/cover-images/IRWTSAYH.jpg",
+				audioUrl: "/songs/I-really-want-to-stay-at-your-house.mp3",
+				plays: Math.floor(Math.random() * 5000),
+				duration: 246,
+			},
 		]);
 
 		const leafSongs = createdSongs.filter((song) => song.artist === "leaf");
+
 		
 		// Create albums with references to song IDs
 		const albums = [
 			{
-				title: "Urban Nights",
+				title: "Cyberpunk",
 				artist: "Various Artists",
 				imageURL: "/albums/1.jpg",
 				releaseYear: 2024,
-				songs: createdSongs.slice(0, 4).map((song) => song._id),
+				songs: createdSongs.slice(16).map((song) => song._id),
 			},
 			{
 				title: "Coastal Dreaming",
@@ -182,7 +191,7 @@ const seedDatabase = async () => {
 				artist: "leaf",
 				imageURL: "/cover-images/leaf-logo.jpg",
 				releaseYear: 2025,
-				songs: leafSongs.map((song) => song._id),
+				songs: createdSongs.slice(14, 15).map((song) => song._id),
 			},
 		];
 

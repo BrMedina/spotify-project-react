@@ -147,6 +147,14 @@ const songs = [
 		audioUrl: "/songs/leafMaymagagawapaba.mp3",
 		duration: 29, // 0:29
 	},
+	{
+		//21
+		title: "I Really Want to Stay at Your House",
+		artist: "Rosa Walton",
+		imageURL: "/cover-images/IRWTSAYH.jpg",
+		audioUrl: "/songs/I-really-want-to-stay-at-your-house.mp3",
+		duration: 246, // 0:29
+	},
 ];
 
 const seedSongs = async () => {
