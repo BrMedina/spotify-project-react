@@ -8,8 +8,8 @@ interface PlayerStore {
     currentIndex: number;
 
     initializeQueue: (songs: Song[]) => void;
-    playAlbum: (songs: Song[], StartIndex?:number) => void;
-    setCurrentSong: (songs: Song[] | null) => void;
+    playAlbum: (songs: Song[], startIndex?:number) => void;
+    setCurrentSong: (song: Song | null) => void;
     togglePlay: () => void
     playNext: () => void
     playPrevious: () => void
@@ -22,8 +22,8 @@ export const usePlayerStore = create<PlayerStore>((set, get) => ({
     currentIndex: -1,
 
     initializeQueue: (songs: Song[]) => {},
-    playAlbum: (songs: Song[], StartIndex?: number) => {},
-    setCurrentSong: (songs: Song | null) => {},
+    playAlbum: (songs: Song[], startIndex?: number) => {},
+    setCurrentSong: (song: Song | null) => {},
     togglePlay: () => {},
     playNext: () => {},
     playPrevious: () => {},
