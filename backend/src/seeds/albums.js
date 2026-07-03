@@ -161,7 +161,7 @@ const seedDatabase = async () => {
 			{
 				title: "Cyberpunk",
 				artist: "Various Artists",
-				imageURL: "/albums/1.jpg",
+				imageURL: "/albums/cyberpunk.png",
 				releaseYear: 2024,
 				songs: createdSongs.slice(16).map((song) => song._id),
 			},
