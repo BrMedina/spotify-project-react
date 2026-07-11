@@ -205,7 +205,7 @@ const AlbumPage = () => {
                                             <span className="group-hover:hidden">{index + 1}</span>
                                         )}
                                         {!isCurrentSong && (
-                                            <Play className="h-4 w-4 hidden group-hover:block" />
+                                            <Play className="h-4 w-4 hidden group-hover:block text-white" fill="currentColor" />
                                         )}
                                     </div>
 

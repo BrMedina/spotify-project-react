@@ -49,9 +49,9 @@ const PlaybackControls = () => {
 
   return (
 		<footer className='h-17 sm:h-23 px-4'>
-			<div className='flex justify-between items-center h-full max-w-[1800px] mx-auto'>
+			<div className='flex justify-between items-center h-full max-w-450 mx-auto'>
 				{/* currently playing song */}
-				<div className='hidden sm:flex items-center gap-4 min-w-[180px] w-[30%]'>
+				<div className='hidden sm:flex items-center gap-4 min-w-45 w-[30%]'>
 					{currentSong && (
 						<>
 							<img
@@ -89,7 +89,7 @@ const PlaybackControls = () => {
 							onClick={playPrevious}
 							disabled={!currentSong}
 						>
-							<SkipBack className='h-4 w-4' />
+							<SkipBack className='h-4 w-4' fill="currentColor" />
 						</Button>
 
 						<Button
@@ -98,7 +98,7 @@ const PlaybackControls = () => {
 							onClick={togglePlay}
 							disabled={!currentSong}
 						>
-							{isPlaying ? <Pause className='h-5 w-5' fill="text-black" /> : <Play className='h-5 w-5' />}
+							{isPlaying ? <Pause className='h-5 w-5' fill="text-black" /> : <Play className='h-5 w-5' fill="text-black" />}
 						</Button>
 						<Button
 							size='icon'
@@ -107,7 +107,7 @@ const PlaybackControls = () => {
 							onClick={playNext}
 							disabled={!currentSong}
 						>
-							<SkipForward className='h-4 w-4' />
+							<SkipForward className='h-4 w-4' fill="currentColor" />
 						</Button>
 						<Button
 							size='icon'
@@ -131,7 +131,7 @@ const PlaybackControls = () => {
 					</div>
 				</div>
 				{/* volume controls */}
-				<div className='hidden sm:flex items-center gap-4 min-w-[180px] w-[30%] justify-end'>
+				<div className='hidden sm:flex items-center gap-4 min-w-45 w-[30%] justify-end'>
 					<Button size='icon' variant='ghost' className='hover:text-white text-zinc-400'>
 						<Mic2 className='h-4 w-4' />
 					</Button>
