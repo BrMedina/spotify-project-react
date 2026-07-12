@@ -5,9 +5,20 @@ import PlaybackControls from './components/PlaybackControls.tsx'
 import FriendsActivity from './components/FriendsActivity';
 import TopBar from '@/components/Topbar';
 import AudioPlayer from './components/AudioPlayer';
+import { useEffect, useState } from 'react';
 
 const MainLayout = () => {
-    const isMobile = false;
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile)
+    })
 
   return (
     <div className='h-screen bg-black text-white flex flex-col'>
@@ -28,12 +39,16 @@ const MainLayout = () => {
                 <Outlet/>
             </ResizablePanel>
 
-            <ResizableHandle className='w-2 bg-black rouned-lg transition-colors'/>
+            {!isMobile && (
+                <>
+                    <ResizableHandle className='w-2 bg-black rouned-lg transition-colors'/>
 
-            {/*right panel */}
-            <ResizablePanel className='min-h-0' defaultSize={24} minSize={0} maxSize={240} collapsedSize={0}>
-                <FriendsActivity />
-            </ResizablePanel>
+                {/*right panel */}
+                    <ResizablePanel className='min-h-0' defaultSize={24} minSize={0} maxSize={240} collapsedSize={0}>
+                        <FriendsActivity />
+                    </ResizablePanel>
+                </>
+            )}
         </ResizablePanelGroup>
 
         <PlaybackControls />
