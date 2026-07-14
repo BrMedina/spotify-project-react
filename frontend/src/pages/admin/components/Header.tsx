@@ -2,6 +2,6 @@
 
 export const Header = () => {
   return (
-    <div>Header</div>
-  )
+    
+    <div className="flex"></div>
 }
