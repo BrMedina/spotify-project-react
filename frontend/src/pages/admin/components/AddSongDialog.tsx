@@ -15,7 +15,7 @@ const [isLoading, setIsLoading] = useState(false);
 const [newSong, setNewSong] = useState({
     title: "",
     artist: "",
-    album: undefined,
+    album: "",
     duration: 0
 });
 
@@ -35,7 +35,7 @@ const handleSubmit = async () => {
   return (
     <Dialog open = {songDialogOpen} onOpenChange={setSongDialogOpen}>
         <DialogTrigger asChild>
-            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black">
+            <Button className="bg-yellow-500 hover:bg-yellow-600 text-black cursor-pointer">
                 <Plus className="mr-4 h-4 w-4" />
                 Add Song
             </Button>
@@ -82,7 +82,7 @@ const handleSubmit = async () => {
                                 </div>
                                 <div className="text-sm text-zinc-400 mb-2">Upload Artwork</div>
                                 <Button variant='outline' size='sm' className="text-xs">
-                                    ChooseFile
+                                    Choose File
                                 </Button>
                             </>
                         )}
@@ -94,7 +94,7 @@ const handleSubmit = async () => {
                     <label className="text-sm font-medium">Audio File</label>
                     <div className="flex items-center gap-2">
                         <Button variant='outline' onClick={() => audioInputRef.current?.click()} className="w-full">
-                            {files.audio ? files.audio.name.slice(0,20) : "Choose Audio File."}
+                            {files.audio ? files.audio.name.slice(0,20) : "Choose Audio File"}
                         </Button>
                     </div>
                 </div>
@@ -136,7 +136,7 @@ const handleSubmit = async () => {
                         value={newSong.album}
                         onValueChange={(value) => setNewSong({...newSong, album:value})}
                     >
-                        <SelectTrigger className="bg-zinc-800 border-zinc-700">
+                        <SelectTrigger className="w-full bg-zinc-800 border-zinc-700">
                             <SelectValue placeholder="Select Album"/>
                         </SelectTrigger>
                         <SelectContent className="bg-zinc-800 border-zinc-700">
