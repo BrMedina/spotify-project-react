@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import { useMusicStore } from "@/stores/useMusicStore"
 import { Plus, Upload, UploadIcon } from "lucide-react";
 
@@ -85,6 +86,52 @@ const handleSubmit = async () => {
                             </>
                         )}
                     </div>
+                </div>
+
+                {/* audio upload */}
+                <div className="space-y-2">
+                    <label className="text-sm font-medium">Audio File</label>
+                    <div className="flex items-center gap-2">
+                        <Button variant='outline' onClick={() => audioInputRef.current?.click()} className="w-full">
+                            {files.audio ? files.audio.name.slice(0,20) : "Choose Audio File."}
+                        </Button>
+                    </div>
+                </div>
+                
+
+                {/* other fields */}
+                <div className="space-y-2">
+                    <label className="text-sm font-medium">Title</label>
+                    <Input
+                        value={newSong.title}
+                        onChange={(e) => setNewSong({ ...newSong, title: e.target.value})}
+                        className="bg-zinc-800 border-zinc-700"
+                    />
+                </div>
+
+                <div className="space-y-2">
+                    <label className="text-sm font-medium">Artist</label>
+                    <Input
+                        value={newSong.artist}
+                        onChange={(e) => setNewSong({ ...newSong, artist: e.target.value})}
+                        className="bg-zinc-800 border-zinc-700"
+                    />
+                </div>
+
+                <div className="space-y-2">
+                    <label className="text-sm font-medium">Duration (seconds)</label>
+                    <Input
+                        type="number"
+                        min="0"
+                        value={newSong.duration}
+                        onChange={(e) => setNewSong({ ...newSong, duration: parseInt(e.target.value) || 0})}
+                        className="bg-zinc-800 border-zinc-700"
+                    />
+                </div>
+
+                <div className="space-y-2">
+                    <label className="text-sm font-medium">Album (Optional)</label>
+                    
                 </div>
             </div>
 
